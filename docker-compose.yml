@@ -1,0 +1,29 @@
+version: '3'
+services:
+  eventmanager:
+    build: .
+    image: pubsubsystem:latest
+    working_dir: /app/pubsub
+    networks:
+      pubsubn:
+        ipv4_address: 172.16.1.2
+    expose:
+      - 10000
+    command: /bin/bash -c "sleep 1000s"
+
+  pubsubagent:
+    image: pubsubsystem:latest
+    depends_on:
+      - eventmanager
+    working_dir: /app/pubsub
+    networks:
+      - pubsubn
+    command: /bin/bash -c "sleep 1000s"
+
+networks:
+  pubsubn:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/16
