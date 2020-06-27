@@ -1,10 +1,20 @@
 # Publisher Board System(RPC)
 
+Publisher Board System is a event distribution System based on Publisher Subscriber model. 
+There are three parts in this system.
+- Publisher(those who publish new content to the customers)
+- Subscribers(those who subscribes to topics and receives new publications)
+- EventManager(A centralized system which distributes the content among publishers and subscribers)
+
+For simplicity, I have included the codebase for publisher and subscribers into a single file called PubSubAgent whereas,
+the event manager is in EventManager file.
+
+The whole project was made to learn how websites with PubSub architecture like 'Medium.com' performs 
+their routing efficiently. 
 
 ## Prerequisites:
 - Java
 - Maven
-
 
 ## Implementation
 - Clone this repository.
